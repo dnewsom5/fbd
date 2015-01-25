@@ -1,0 +1,70 @@
+﻿
+	<!-- Section: about -->
+	<section id="about" class="home-section text-center bg-gray">
+		<div class="heading-about marginbot-50">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+		
+					<div class="section-heading">
+					<h2>About us</h2>
+					<p>From the creators of Concur travel and the Curb </p>
+					</div>
+			
+				</div>
+			</div>
+			</div>
+		</div>
+
+		<div class="container">
+
+		<div class="row">
+			<div class="col-xs-6 col-sm-3 col-md-3">
+
+				<div class="team boxed-grey">
+					<div class="inner">
+						<h5>Jenna</h5>
+						<p class="subtitle">Creative</p>
+						<div class="avatar"><img src="img/team/1.jpg" alt="" class="img-responsive" /></div>
+					</div>
+				</div>
+		
+			</div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+
+				<div class="team boxed-grey">
+					<div class="inner">
+						<h5>Jenny</h5>
+						<p class="subtitle">Design</p>
+						<div class="avatar"><img src="img/team/2.jpg" alt="" class="img-responsive" /></div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+		
+				<div class="team boxed-grey">
+					<div class="inner">
+						<h5>Andrew</h5>
+						<p class="subtitle">CTO</p>
+						<div class="avatar"><img src="img/team/3.jpg" alt="" class="img-responsive" /></div>
+					</div>
+				</div>
+		
+			</div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+		
+				<div class="team boxed-grey">
+					<div class="inner">
+						<h5>David</h5>
+						<p class="subtitle">CEO</p>
+						<div class="avatar"><img src="img/team/4.jpg" alt="" class="img-responsive" /></div>
+					</div>
+				</div>
+	
+			</div>
+		</div>		
+		</div>
+	</section>
+	<!-- /Section: about -->
+	

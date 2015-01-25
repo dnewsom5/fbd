@@ -1,0 +1,27 @@
+﻿@html.extend('/layout.vash', function(model){
+	
+	model.title = "Fly By Date / Login"
+
+	@html.block('content', function(model){
+		<h1>hello there</h1>
+		@if(model.username)
+		{
+			<div >
+				You are logged in as: @model.username
+			</div>
+		}
+		else {
+			<div class="container">
+				<div class="row">
+
+					<h1>Login</h1>
+					<div>
+						<a href="/auth/facebook"><img src="/img/login-with-facebook.png" width="154" height="22"></a>
+					</div>
+				</div>
+			</div>
+		}
+
+	})
+})
+

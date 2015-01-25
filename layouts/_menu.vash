@@ -1,0 +1,556 @@
+<div id="cnqr-navbar-primary">
+	<div id="cnqr-premenu-container">
+		<a href="#cnqr-app-content" class="screen-reader-only-focusable">Skip navigation links</a>
+	</div>
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="navbar-outer pull-left">
+		<ul aria-label="Primary Menu" role="menubar" class="nav navbar-nav">
+			<li data-menu-item="Dashboard" class=" cnqr-nav-dashboard cnqr-sticky">
+				<a role="menuitem" href="/home.asp">
+					<span class="screen-reader-only">Home</span>
+					<span aria-hidden="true" class="cnqr-home-text">Home</span>
+					<i aria-hidden="true" class="icon-logotype"></i>
+				</a>
+			</li>
+		<li data-menu-item="Travel" class="cnqr-nav-travel ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/travelhome.asp">Travel</a>
+		</li>
+		<li data-menu-item="Approvals" class="cnqr-nav-approvals ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/approvalsportal.asp">Approvals</a>
+		</li>
+		<li data-menu-item="Reports" class="dropdown cnqr-nav-reports">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Reporting
+					<i class="caret"></i>
+			</a>
+
+			<ul class="dropdown-menu " role="menu">
+		<li data-menu-item="Reports_0" class="cnqr-nav-reports_0 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/reports.asp">Travel Reports</a>
+		</li>
+			</ul>
+		</li>
+		<li data-menu-item="Expense" class="cnqr-nav-expense  active cnqr-sticky">
+			<a tabindex="-1" role="menuitem" target="_self" href="/reports/list">Expense</a>
+		</li>
+		<li data-menu-item="Administration" class="dropdown cnqr-nav-administration cnqr-sticky visible-sm visible-xs hidden-lg hidden-md">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Administration
+					<i class="caret"></i>
+			</a>
+
+			<ul class="dropdown-menu " role="menu">
+		<li data-menu-item="Administration_0" class="dropdown cnqr-nav-administration_0">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Concur
+					<i class="icon-arrow-1-e pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu " role="menu">
+		<li data-menu-item="Administration_0_0" class="cnqr-nav-administration_0_0 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/outtask_admin.asp">Concur Admin</a>
+		</li>
+		<li data-menu-item="Administration_0_1" class="cnqr-nav-administration_0_1 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/Billing2Admin/contract_view.asp">Concur Billing Admin</a>
+		</li>
+		<li data-menu-item="Administration_0_2" class="cnqr-nav-administration_0_2 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/TechSupportAdmin.asp">Tech Support Admin</a>
+		</li>
+		<li data-menu-item="Administration_0_3" class="cnqr-nav-administration_0_3 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/UI/AppCenter/Manage">App Center Listings</a>
+		</li>
+		<li data-menu-item="Administration_0_4" class="cnqr-nav-administration_0_4 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/UI/GlobalLoginService/RedirectTo">Select Datacenter</a>
+		</li>
+		<li data-menu-item="Administration_0_5" class="cnqr-nav-administration_0_5 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/Module/ModuleMgmtMain.asp">Module Management</a>
+		</li>
+			</ul>
+		</li>
+		<li data-menu-item="Administration_1" class="dropdown cnqr-nav-administration_1">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Company
+					<i class="icon-arrow-1-e pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu " role="menu">
+		<li data-menu-item="Administration_1_0" class="cnqr-nav-administration_1_0 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/companyadmin/company_admin.asp">Company Admin</a>
+		</li>
+		<li data-menu-item="Administration_1_1" class="cnqr-nav-administration_1_1 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/localization_tool.asp">Localization Tool</a>
+		</li>
+		<li data-menu-item="Administration_1_2" class="cnqr-nav-administration_1_2 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/TravelAdmin/company_details.asp">Reseller Admin</a>
+		</li>
+		<li data-menu-item="Administration_1_3" class="cnqr-nav-administration_1_3 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/websvc/ws_admin.asp">Web Services</a>
+		</li>
+		<li data-menu-item="Administration_1_4" class="cnqr-nav-administration_1_4 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/companyadmin/report_permissions.asp">Report Admin</a>
+		</li>
+		<li data-menu-item="Administration_1_5" class="cnqr-nav-administration_1_5 ">
+				<a tabindex="-1" role="menuitem" target="_self" href=" /ui/companyadmin/UserExperienceSettings">User Experience Settings</a>
+		</li>
+			</ul>
+		</li>
+		<li data-menu-item="Administration_2" class="dropdown cnqr-nav-administration_2">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Travel
+					<i class="icon-arrow-1-e pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu " role="menu">
+		<li data-menu-item="Administration_2_0" class="cnqr-nav-administration_2_0 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/companyadmin/travel_rule_detail.asp">Travel Admin</a>
+		</li>
+		<li data-menu-item="Administration_2_1" class="cnqr-nav-administration_2_1 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/TravelAdmin/company_travel_view.asp">Travel System Admin</a>
+		</li>
+			</ul>
+		</li>
+			</ul>
+		</li>
+		<li data-menu-item="Connect" class="cnqr-nav-connect ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/ui/appcenter">App Center</a>
+		</li>
+		<li data-menu-item="Favorites" class="dropdown cnqr-nav-favorites">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Links
+					<i class="caret"></i>
+			</a>
+
+			<ul class="dropdown-menu " role="menu">
+		<li data-menu-item="Favorites_0" class="cnqr-nav-favorites_0 ">
+				<a tabindex="-1" role="menuitem" href="javascript:window.open('http://webmail.mailtask.com/exchange')"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; Outlook Web Access</a>
+		</li>
+		<li data-menu-item="Favorites_1" class="cnqr-nav-favorites_1 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="http://localhost/favorites/favorites.asp?url=http://app2.outtask.com/administration/view_companies.asp"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; Billing Admin</a>
+		</li>
+		<li data-menu-item="Favorites_2" class="cnqr-nav-favorites_2 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="http://localhost/favorites/favorites.asp?url=http://app2.outtask.com/administration/billing_products.asp"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; Billing Products</a>
+		</li>
+		<li data-menu-item="Favorites_3" class="cnqr-nav-favorites_3 ">
+				<a tabindex="-1" role="menuitem" href="javascript:window.open('http://support.outtask.com/bugtrack')"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; My Bugs</a>
+		</li>
+		<li data-menu-item="Favorites_4" class="cnqr-nav-favorites_4 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="http://localhost/favorites/favorites.asp?url=https://app2.outtask.com/OpCenter/opcenter.asp"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; Operations Center</a>
+		</li>
+		<li class="divider"></li>
+		<li data-menu-item="Favorites_5" class="cnqr-nav-favorites_5 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="http://localhost/favorites/favorites.asp?url=http://localhost/vendoradmin/xmlselectlogview.asp"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; Xml Logs</a>
+		</li>
+			</ul>
+		</li>
+
+			
+			<li class="dropdown hidden" data-menu-item="more">
+				<a tabindex="-1" data-role="button" class="dropdown-toggle" role="menuitem" data-toggle="dropdown">
+					<span class="screen-reader-only">More...</span>
+					<i aria-hidden="true" class="icon-menu"></i>
+					<i aria-hidden="true" class="caret"></i>
+				</a>
+				<ul class="dropdown-menu more-menu pull-right " role="menu">
+		<li data-menu-item="Travel" class="cnqr-nav-travel ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/travelhome.asp">Travel</a>
+		</li>
+		<li data-menu-item="Approvals" class="cnqr-nav-approvals ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/approvalsportal.asp">Approvals</a>
+		</li>
+		<li data-menu-item="Reports" class="dropdown cnqr-nav-reports">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Reporting
+					<i class="icon-arrow-1-s pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu pull-right" role="menu">
+		<li data-menu-item="Reports_0" class="cnqr-nav-reports_0 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/reports.asp">Travel Reports</a>
+		</li>
+			</ul>
+		</li>
+		<li data-menu-item="Administration" class="dropdown cnqr-nav-administration">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Administration
+					<i class="icon-arrow-1-s pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu pull-right" role="menu">
+		<li data-menu-item="Administration_0" class="dropdown cnqr-nav-administration_0">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Concur
+					<i class="icon-arrow-1-s pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu pull-right" role="menu">
+		<li data-menu-item="Administration_0_0" class="cnqr-nav-administration_0_0 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/outtask_admin.asp">Concur Admin</a>
+		</li>
+		<li data-menu-item="Administration_0_1" class="cnqr-nav-administration_0_1 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/Billing2Admin/contract_view.asp">Concur Billing Admin</a>
+		</li>
+		<li data-menu-item="Administration_0_2" class="cnqr-nav-administration_0_2 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/TechSupportAdmin.asp">Tech Support Admin</a>
+		</li>
+		<li data-menu-item="Administration_0_3" class="cnqr-nav-administration_0_3 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/UI/AppCenter/Manage">App Center Listings</a>
+		</li>
+		<li data-menu-item="Administration_0_4" class="cnqr-nav-administration_0_4 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/UI/GlobalLoginService/RedirectTo">Select Datacenter</a>
+		</li>
+		<li data-menu-item="Administration_0_5" class="cnqr-nav-administration_0_5 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/Module/ModuleMgmtMain.asp">Module Management</a>
+		</li>
+			</ul>
+		</li>
+		<li data-menu-item="Administration_1" class="dropdown cnqr-nav-administration_1">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Company
+					<i class="icon-arrow-1-s pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu pull-right" role="menu">
+		<li data-menu-item="Administration_1_0" class="cnqr-nav-administration_1_0 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/companyadmin/company_admin.asp">Company Admin</a>
+		</li>
+		<li data-menu-item="Administration_1_1" class="cnqr-nav-administration_1_1 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/localization_tool.asp">Localization Tool</a>
+		</li>
+		<li data-menu-item="Administration_1_2" class="cnqr-nav-administration_1_2 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/TravelAdmin/company_details.asp">Reseller Admin</a>
+		</li>
+		<li data-menu-item="Administration_1_3" class="cnqr-nav-administration_1_3 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/websvc/ws_admin.asp">Web Services</a>
+		</li>
+		<li data-menu-item="Administration_1_4" class="cnqr-nav-administration_1_4 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/companyadmin/report_permissions.asp">Report Admin</a>
+		</li>
+		<li data-menu-item="Administration_1_5" class="cnqr-nav-administration_1_5 ">
+				<a tabindex="-1" role="menuitem" target="_self" href=" /ui/companyadmin/UserExperienceSettings">User Experience Settings</a>
+		</li>
+			</ul>
+		</li>
+		<li data-menu-item="Administration_2" class="dropdown cnqr-nav-administration_2">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Travel
+					<i class="icon-arrow-1-s pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu pull-right" role="menu">
+		<li data-menu-item="Administration_2_0" class="cnqr-nav-administration_2_0 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/companyadmin/travel_rule_detail.asp">Travel Admin</a>
+		</li>
+		<li data-menu-item="Administration_2_1" class="cnqr-nav-administration_2_1 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/TravelAdmin/company_travel_view.asp">Travel System Admin</a>
+		</li>
+			</ul>
+		</li>
+			</ul>
+		</li>
+		<li data-menu-item="Connect" class="cnqr-nav-connect ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/ui/appcenter">App Center</a>
+		</li>
+		<li data-menu-item="Favorites" class="dropdown cnqr-nav-favorites">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Links
+					<i class="icon-arrow-1-s pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu pull-right" role="menu">
+		<li data-menu-item="Favorites_0" class="cnqr-nav-favorites_0 ">
+				<a tabindex="-1" role="menuitem" href="javascript:window.open('http://webmail.mailtask.com/exchange')"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; Outlook Web Access</a>
+		</li>
+		<li data-menu-item="Favorites_1" class="cnqr-nav-favorites_1 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="http://localhost/favorites/favorites.asp?url=http://app2.outtask.com/administration/view_companies.asp"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; Billing Admin</a>
+		</li>
+		<li data-menu-item="Favorites_2" class="cnqr-nav-favorites_2 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="http://localhost/favorites/favorites.asp?url=http://app2.outtask.com/administration/billing_products.asp"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; Billing Products</a>
+		</li>
+		<li data-menu-item="Favorites_3" class="cnqr-nav-favorites_3 ">
+				<a tabindex="-1" role="menuitem" href="javascript:window.open('http://support.outtask.com/bugtrack')"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; My Bugs</a>
+		</li>
+		<li data-menu-item="Favorites_4" class="cnqr-nav-favorites_4 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="http://localhost/favorites/favorites.asp?url=https://app2.outtask.com/OpCenter/opcenter.asp"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; Operations Center</a>
+		</li>
+		<li class="divider"></li>
+		<li data-menu-item="Favorites_5" class="cnqr-nav-favorites_5 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="http://localhost/favorites/favorites.asp?url=http://localhost/vendoradmin/xmlselectlogview.asp"><img width="12" height="12" alt="" src="/static/images/menu_custom.gif">&nbsp; Xml Logs</a>
+		</li>
+			</ul>
+		</li>
+				</ul>
+			</li>
+
+		</ul>
+	</div>
+
+	<div class="navbar-outer pull-right">
+		<ul aria-label="Help Menu" role="menubar" class="nav navbar-nav pull-right">
+		<li data-menu-item="Administration" class="dropdown cnqr-nav-administration visible-md visible-lg hidden-sm hidden-xs active">
+			<a tabindex="0" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Administration
+					<i class="caret"></i>
+			</a>
+
+			<ul class="dropdown-menu pull-right" role="menu">
+		<li data-menu-item="Administration_0" class="dropdown cnqr-nav-administration_0">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Concur
+					<i class="icon-arrow-1-s pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu pull-right" role="menu">
+		<li data-menu-item="Administration_0_0" class="cnqr-nav-administration_0_0 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/outtask_admin.asp">Concur Admin</a>
+		</li>
+		<li data-menu-item="Administration_0_1" class="cnqr-nav-administration_0_1 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/Billing2Admin/contract_view.asp">Concur Billing Admin</a>
+		</li>
+		<li data-menu-item="Administration_0_2" class="cnqr-nav-administration_0_2 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/TechSupportAdmin.asp">Tech Support Admin</a>
+		</li>
+		<li data-menu-item="Administration_0_3" class="cnqr-nav-administration_0_3 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/UI/AppCenter/Manage">App Center Listings</a>
+		</li>
+		<li data-menu-item="Administration_0_4" class="cnqr-nav-administration_0_4 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/UI/GlobalLoginService/RedirectTo">Select Datacenter</a>
+		</li>
+		<li data-menu-item="Administration_0_5" class="cnqr-nav-administration_0_5 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/Module/ModuleMgmtMain.asp">Module Management</a>
+		</li>
+			</ul>
+		</li>
+		<li data-menu-item="Administration_1" class="dropdown cnqr-nav-administration_1">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Company
+					<i class="icon-arrow-1-s pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu pull-right" role="menu">
+		<li data-menu-item="Administration_1_0" class="cnqr-nav-administration_1_0 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/companyadmin/company_admin.asp">Company Admin</a>
+		</li>
+		<li data-menu-item="Administration_1_1" class="cnqr-nav-administration_1_1 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/localization_tool.asp">Localization Tool</a>
+		</li>
+		<li data-menu-item="Administration_1_2" class="cnqr-nav-administration_1_2 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/TravelAdmin/company_details.asp">Reseller Admin</a>
+		</li>
+		<li data-menu-item="Administration_1_3" class="cnqr-nav-administration_1_3 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/websvc/ws_admin.asp">Web Services</a>
+		</li>
+		<li data-menu-item="Administration_1_4" class="cnqr-nav-administration_1_4 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/companyadmin/report_permissions.asp">Report Admin</a>
+		</li>
+		<li data-menu-item="Administration_1_5" class="cnqr-nav-administration_1_5 ">
+				<a tabindex="-1" role="menuitem" target="_self" href=" /ui/companyadmin/UserExperienceSettings">User Experience Settings</a>
+		</li>
+			</ul>
+		</li>
+		<li data-menu-item="Administration_2" class="dropdown cnqr-nav-administration_2">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Travel
+					<i class="icon-arrow-1-s pull-right"></i>
+			</a>
+
+			<ul class="dropdown-menu pull-right" role="menu">
+		<li data-menu-item="Administration_2_0" class="cnqr-nav-administration_2_0 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/companyadmin/travel_rule_detail.asp">Travel Admin</a>
+		</li>
+		<li data-menu-item="Administration_2_1" class="cnqr-nav-administration_2_1 ">
+				<a tabindex="-1" role="menuitem" target="_self" href="/administration/TravelAdmin/company_travel_view.asp">Travel System Admin</a>
+		</li>
+			</ul>
+		</li>
+			</ul>
+		</li>
+			<li class="visible-md visible-lg hidden-sm hidden-xs"><span aria-hidden="true" class="cnqr-pipe"></span></li>
+		<li data-menu-item="Help" class="dropdown cnqr-nav-help">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle" data-toggle="dropdown">
+				Help
+					<i class="caret"></i>
+			</a>
+
+			<ul class="dropdown-menu pull-right" role="menu">
+		<li data-menu-item="Help_0" class="cnqr-nav-help_0 ">
+				<a data-analytics="helplink" tabindex="-1" role="menuitem" target="_blank" href="/ui/shared/helplink/index?helpTopic=TravelUser">Travel Help</a>
+		</li>
+		<li data-menu-item="Help_1" class="cnqr-nav-help_1 ">
+				<a data-analytics="helplink" tabindex="-1" role="menuitem" target="_blank" href="/ui/shared/helplink/index?helpTopic=TravelAdmin">Travel Administration Help</a>
+		</li>
+		<li data-menu-item="Help_2" class="cnqr-nav-help_2 ">
+				<a data-analytics="helplink" tabindex="-1" role="menuitem" target="_blank" href="/ui/shared/helplink/index?helpTopic=LocateAndAlert">Locate &amp; Alert Help</a>
+		</li>
+		<li data-menu-item="Help_3" class="cnqr-nav-help_3 ">
+				<a data-analytics="helplink" tabindex="-1" role="menuitem" href="javascript:changeLocalizationMode();">Enable Localization</a>
+		</li>
+			</ul>
+		</li>
+
+
+		</ul>
+
+
+
+
+		
+		<div class="clearfix"></div>
+		<ul class="cnqr-profile-link  nav navbar-nav pull-right clearfix" id="cnqr-profile">
+			<li data-menu-item="Profile" class="">
+				<a id="cnqr-profile-menu-link" class="" href="#" role="button">
+					<span class="hidden-sm hidden-xs">Profile</span>
+					<i aria-hidden="true" class="caret hidden-sm hidden-xs"></i>
+
+					<img alt="" src="/static/images/employee.jpg" id="cnqr-profile-avatar" class="cnqr-profile-img-avatar">
+				</a>
+			</li>
+		</ul>
+	</div>	
+</div>
+
+<!-- Profile Popup -->
+<div data-dialogwidth="400" id="cnqr-profile-popup" class="cnqr-profile-popup ">
+	<div class="cnqr-avatarred-div">
+		<div class="icon-user cnqr-avatar-icon  pull-left"></div>
+		<div class="pull-left">
+			<div class="lead cnqr-condensed">Andrew Stephen Csontos</div>
+		</div>
+	</div>
+
+	<div class="btn-toolbar cnqr-muted text-center">
+		<a href="/profile/profile_user.asp" class="btn btn-link cnqr-condensed" role="button">Profile Settings</a> 
+		<span aria-hidden="true" class="cnqr-pipe"></span>
+		<a href="javascript:void(0)" class="btn btn-link cnqr-condensed cnqr-logout" role="button">Sign Out</a>
+	</div>
+
+		<hr>
+		<div id="cnqr-profile-popup-wait" class="cnqr-avatarred-div-outer cnqr-loading-placeholder">
+			<div id="cnqr-profile-popup-choose" class="cnqr-avatarred-div hidden">
+				<div class="icon-user-admin cnqr-avatar-icon pull-left"></div>
+				<div class="pull-left cnqr-inner">
+					<label for="cnqr-profile-popup-ac-users">Administer for another user...</label>
+
+					<div class="cnqr-radio-container ">
+							<input type="radio" checked="checked" name="cnqr-profile-popup-radio" id="cnqr-profile-popup-radio-delegate" autocomplete="off">
+							<label for="cnqr-profile-popup-radio-delegate">I am a delegate or travel assistant</label>
+							<br>
+
+
+							<input type="radio" name="cnqr-profile-popup-radio" id="cnqr-profile-popup-radio-self" autocomplete="off">
+							<label for="cnqr-profile-popup-radio-self">I am a self-assigning travel arranger</label>
+							<br>
+					</div>
+					<!--Users Display text-->
+					<input data-processing-placeholder-title="Processing" data-processing-placeholder="Switching 'Administer for' view. Please wait..." data-entername-placeholder="Enter a name" data-selectname-placeholder="Select a name" data-switcherror-msg="Error switching user" autocomplete="off" value="" placeholder="" id="cnqr-profile-popup-ac-users" class="cnqr-autocomplete-input form-control cnqr-static">
+					<input autocomplete="off" value="" placeholder="" id="cnqr-profile-popup-ac-users-dynamic" class="cnqr-autocomplete-input form-control cnqr-hide cnqr-dynamic">
+							
+					<!--Users Value holder-->
+					<input type="hidden" value="" name="cnqr-profile-popup-ac-users-val" id="cnqr-profile-popup-ac-users-val">
+					<br>
+				</div>
+			</div>
+		</div>
+		<div class="btn-toolbar cnqr-muted text-center">
+			<a href="javascript:void(0)" role="button" id="cnqr-profile-popup-cancel" class="btn btn-link btn-sm">Cancel</a> 
+			<a href="javascript:void(0)" role="button" id="cnqr-profile-popup-apply" class="btn btn-default btn-sm disabled">Apply</a>
+		</div>
+</div>
+
+@html.block('toolbar', function(model){
+<div class="clearfix"></div>
+<!-- Toolbar -->
+<div class="cnqr-toolbar-more navbar navbar-default" id="cnqr-navbar-secondary" style="overflow-x: visible;">
+	<ul aria-label="Secondary Menu" role="menubar" class="nav navbar-nav">
+		<li data-menu-item="Expense_0" class="cnqr-nav-expense_0 active">
+			<a tabindex="0" role="menuitem" target="_self" href="/reports/list">Expense Home</a>
+		</li>
+		<li data-menu-item="Expense_1" class="cnqr-nav-expense_1 ">
+			<a tabindex="-1" role="menuitem" target="_self" href="/ui/Expense/expensereportlibrary">Expense Library</a>
+		</li>
+		<li data-menu-item="Expense_2" class="cnqr-nav-expense_2 ">
+			<a tabindex="-1" role="menuitem" target="_self" href="/Expense/Client/cardtransactions.asp">View Transactions</a>
+		</li>
+		<li data-menu-item="Expense_3" class="dropdown cnqr-nav-expense_3 ">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle">
+				Cash Advances
+
+				<i class="caret"></i>
+			</a>
+			<ul class="dropdown-menu " role="menu">
+				<li data-menu-item="Expense_3_0" class="cnqr-nav-expense_3_0 ">
+					<a tabindex="-1" role="menuitem" href="javascript:if (CNQR &amp;&amp; CNQR.currentPage &amp;&amp; (CNQR.currentPage == 'expense') &amp;&amp; CNQR.expense &amp;&amp; CNQR.expense.viewCashAdvances) {CNQR.expense.viewCashAdvances()} else {document.location.href='/expense/Client/default.asp?cashadvance=view'}">View Cash Advances</a>
+				</li>
+				<li data-menu-item="Expense_3_1" class="cnqr-nav-expense_3_1 ">
+					<a tabindex="-1" role="menuitem" href="javascript:if (CNQR &amp;&amp; CNQR.currentPage &amp;&amp; (CNQR.currentPage == 'expense') &amp;&amp; CNQR.expense &amp;&amp; CNQR.expense.newCashAdvance) {CNQR.expense.newCashAdvance()} else {document.location.href='/expense/Client/default.asp?cashadvance=new'}">New Cash Advance</a>
+				</li>
+			</ul>
+		</li>
+		<li data-menu-item="Expense_4" class="dropdown cnqr-nav-expense_4 ">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle">
+				Authorization Requests
+
+				<i class="caret"></i>
+			</a>
+			<ul class="dropdown-menu pull-right" role="menu">
+				<li data-menu-item="Expense_4_0" class="cnqr-nav-expense_4_0 ">
+					<a tabindex="-1" role="menuitem" href="javascript:if (CNQR &amp;&amp; CNQR.authr &amp;&amp; CNQR.authr.viewMyAuthRequests) {CNQR.authr.viewMyAuthRequests()} else {document.location.href='/expense/Client/authorizations.asp?action=requests'}">View Authorization Requests</a>
+				</li>
+				<li data-menu-item="Expense_4_1" class="cnqr-nav-expense_4_1 ">
+					<a tabindex="-1" role="menuitem" href="javascript:if (CNQR &amp;&amp; CNQR.authr &amp;&amp; CNQR.authr.addNewAuthorizationRequest) {CNQR.authr.addNewAuthorizationRequest()} else {document.location.href='/expense/Client/authorizations.asp?action=new'}">New Authorization Request</a>
+				</li>
+			</ul>
+		</li>
+		<li data-menu-item="more" class="dropdown cnqr-nav-more more-menu hidden">
+			<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle">
+				<i class="icon-menu"></i>
+				<i class="caret"></i>
+			</a>
+			<ul class="dropdown-menu pull-right" role="menu">
+				<li data-menu-item="Expense_0" class="cnqr-nav-expense_0  hidden">
+					<a tabindex="-1" role="menuitem" target="_self" href="/ui/Expense/">Expense Home</a>
+				</li>
+				<li data-menu-item="Expense_1" class="cnqr-nav-expense_1  hidden">
+					<a tabindex="-1" role="menuitem" target="_self" href="/ui/Expense/expensereportlibrary">Expense Library</a>
+				</li>
+				<li data-menu-item="Expense_2" class="cnqr-nav-expense_2  hidden">
+					<a tabindex="-1" role="menuitem" target="_self" href="/Expense/Client/cardtransactions.asp">View Transactions</a>
+				</li>
+				<li data-menu-item="Expense_3" class="dropdown cnqr-nav-expense_3  hidden">
+					<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle">
+						Cash Advances
+
+						<i class="icon-arrow-1-s pull-right"></i>
+					</a>
+					<ul class="dropdown-menu pull-right" role="menu">
+						<li data-menu-item="Expense_3_0" class="cnqr-nav-expense_3_0 ">
+							<a tabindex="-1" role="menuitem" href="javascript:if (CNQR &amp;&amp; CNQR.currentPage &amp;&amp; (CNQR.currentPage == 'expense') &amp;&amp; CNQR.expense &amp;&amp; CNQR.expense.viewCashAdvances) {CNQR.expense.viewCashAdvances()} else {document.location.href='/expense/Client/default.asp?cashadvance=view'}">View Cash Advances</a>
+						</li>
+						<li data-menu-item="Expense_3_1" class="cnqr-nav-expense_3_1 ">
+							<a tabindex="-1" role="menuitem" href="javascript:if (CNQR &amp;&amp; CNQR.currentPage &amp;&amp; (CNQR.currentPage == 'expense') &amp;&amp; CNQR.expense &amp;&amp; CNQR.expense.newCashAdvance) {CNQR.expense.newCashAdvance()} else {document.location.href='/expense/Client/default.asp?cashadvance=new'}">New Cash Advance</a>
+						</li>
+					</ul>
+				</li>
+				<li data-menu-item="Expense_4" class="dropdown cnqr-nav-expense_4  hidden">
+					<a tabindex="-1" aria-haspopup="true" role="menuitem" class="dropdown-toggle">
+						Authorization Requests
+
+						<i class="icon-arrow-1-s pull-right"></i>
+					</a>
+					<ul class="dropdown-menu pull-right" role="menu">
+						<li data-menu-item="Expense_4_0" class="cnqr-nav-expense_4_0 ">
+							<a tabindex="-1" role="menuitem" href="javascript:if (CNQR &amp;&amp; CNQR.authr &amp;&amp; CNQR.authr.viewMyAuthRequests) {CNQR.authr.viewMyAuthRequests()} else {document.location.href='/expense/Client/authorizations.asp?action=requests'}">View Authorization Requests</a>
+						</li>
+						<li data-menu-item="Expense_4_1" class="cnqr-nav-expense_4_1 ">
+							<a tabindex="-1" role="menuitem" href="javascript:if (CNQR &amp;&amp; CNQR.authr &amp;&amp; CNQR.authr.addNewAuthorizationRequest) {CNQR.authr.addNewAuthorizationRequest()} else {document.location.href='/expense/Client/authorizations.asp?action=new'}">New Authorization Request</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+})
+
+
+ 
+				
