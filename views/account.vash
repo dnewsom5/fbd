@@ -1,0 +1,8 @@
+@html.extend('/layout.vash', function(model){
+@html.block('content', function(model){
+
+	<p>ID: @model.id</p>
+	<p>Username: @model.username</p>
+	<p>Name: @model.displayName</p>
+})
+})
