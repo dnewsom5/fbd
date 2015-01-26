@@ -73,11 +73,18 @@
     <Content Include="public\img\works\6.jpg" />
     <Content Include="public\img\works\7.jpg" />
     <Content Include="public\img\works\8.jpg" />
+    <Content Include="views\account.vash" />
+    <Content Include="views\index.vash" />
+    <Content Include="views\layout.vash" />
+    <Content Include="views\login.vash" />
+    <Content Include="views\_about.vash" />
+    <Content Include="views\_contact.vash" />
+    <Content Include="views\_intro.vash" />
+    <Content Include="views\_menu.vash" />
+    <Content Include="views\_works.vash" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="layouts" />
-    <Folder Include="obj" />
-    <Folder Include="obj\Debug" />
     <Folder Include="public" />
     <Folder Include="public\color" />
     <Folder Include="public\css" />

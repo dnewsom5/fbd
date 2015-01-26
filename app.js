@@ -10,9 +10,8 @@ var express = require('express')
   , port = process.env.PORT || 3000
   ;
 
-
-var FACEBOOK_APP_ID = "406796419480409"
-var FACEBOOK_APP_SECRET = "d5ea0ad6908479e98d5ace7c9504a47b";
+var FACEBOOK_APP_ID = process.env.FBD_FACEBOOK_APP_ID;
+var FACEBOOK_APP_SECRET = process.env.FBD_FACEBOOK_APP_SECRET;
 
 
 // Passport session setup.
