@@ -27,5 +27,6 @@ build/Release
 node_modules
 
 #Visual Studio
-.suo
 obj
+*.suo
+*.dat
