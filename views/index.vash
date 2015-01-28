@@ -1,7 +1,10 @@
 @html.extend('/layout.vash', function(model){
 	
 	model.title = "Fly By Date"
-
+	if (model.user)
+	{
+		delete model.user._raw;
+	}
 	@html.block('content', function(model){
 		
 		<section id="contact" class="home-section text-center">
@@ -12,8 +15,10 @@
 				{
 					<h1>hello there  @model.user.displayName</h1>
 
-					<div> @JSON.stringify(model)</div>
+				
 				}
+				<div> @JSON.stringify(model)</div>
+
 			</div>
 		</div>
 

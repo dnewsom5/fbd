@@ -18,6 +18,14 @@
 					<div>
 						<a href="/auth/facebook"><img src="/img/login-with-facebook.png" width="154" height="22"></a>
 					</div>
+					<div>
+						<a href="/auth/tripit">Login with TripIt</a>
+					</div>
+
+					<div>
+						<a href="/auth/tripit/connect">Login with TripIt version 2</a>
+					</div>
+
 				</div>
 			</div>
 		}

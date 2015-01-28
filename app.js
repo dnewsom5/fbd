@@ -1,17 +1,24 @@
 var express = require('express')
   , passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy
+  , TripItStrategy = require('passport-tripit').Strategy
   , logger = require('morgan')
   , session = require('express-session')
   , bodyParser = require("body-parser")
   , cookieParser = require("cookie-parser")
   , methodOverride = require('method-override')
+  , querystring = require('querystring')
   , vash = require('vash')
   , port = process.env.PORT || 3000
+  , url = require('url')
   ;
 
 var FACEBOOK_APP_ID = process.env.FBD_FACEBOOK_APP_ID;
 var FACEBOOK_APP_SECRET = process.env.FBD_FACEBOOK_APP_SECRET;
+
+
+var TRIPIT_API_KEY = process.env.FBD_TRIPIT_APP_ID;
+var TRIPIT_API_SECRET = process.env.FBD_TRIPIT_APP_SECRET;
 
 
 // Passport session setup.
@@ -30,30 +37,6 @@ passport.deserializeUser(function(obj, done) {
 });
 
 
-// Use the FacebookStrategy within Passport.
-//   Strategies in Passport require a `verify` function, which accept
-//   credentials (in this case, an accessToken, refreshToken, and Facebook
-//   profile), and invoke a callback with a user object.
-passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    // asynchronous verification, for effect...
-    process.nextTick(function () {
-      
-      // To keep the example simple, the user's Facebook profile is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the Facebook account with a user record in your database,
-      // and return that user instead.
-      return done(null, profile);
-    });
-  }
-));
-
-
-
 
 var app = express();
 
@@ -65,15 +48,58 @@ var app = express();
   app.use(bodyParser());
   app.use(methodOverride());
   app.use(session({ secret: 'keyboard cat' }));
-  // Initialize Passport!  Also use passport.session() middleware, to support
+  app.use(express.static(__dirname + '/public'));
+
+// Initialize Passport!  Also use passport.session() middleware, to support
   // persistent login sessions (recommended).
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(express.static(__dirname + '/public'));
 
 
-app.get('/', function(req, res){
-  res.render('index', { user: req.user });
+
+// Use the FacebookStrategy within Passport.
+//   Strategies in Passport require a `verify` function, which accept
+//   credentials (in this case, an accessToken, refreshToken, and Facebook
+//   profile), and invoke a callback with a user object.
+passport.use(new FacebookStrategy({
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+},
+  function (accessToken, refreshToken, profile, done) {
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+        
+        // To keep the example simple, the user's Facebook profile is returned to
+        // represent the logged-in user.  In a typical application, you would want
+        // to associate the Facebook account with a user record in your database,
+        // and return that user instead.
+        return done(null, profile);
+    });
+}
+));
+
+passport.use(new TripItStrategy({
+    consumerKey: TRIPIT_API_KEY,
+    consumerSecret: TRIPIT_API_SECRET,
+    callbackURL: "http://localhost:3000/auth/tripit/callback", 
+    sessionKey: 'TripitSessionKey'
+},
+function (token, tokenSecret, profile, done) {
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+        // To keep the example simple, the user's TripIt profile is returned to
+        // represent the logged-in user. In a typical application, you would want
+        // to associate the TripIt account with a user record in your database,
+        // and return that user instead.
+        return done(null, profile);
+    });
+}
+));
+
+
+app.get('/', function (req, res) {
+  res.render('index', { user: req.user, sess: req.session });
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
@@ -107,10 +133,155 @@ app.get('/auth/facebook/callback',
     res.redirect('/');
   });
 
+
+// GET /auth/tripit
+// Use passport.authenticate() as route middleware to authenticate the
+// request. The first step in TripIt authentication will involve redirecting
+// the user to tripit.com. After authorization, TripIt will redirect the user
+// back to this application at /auth/tripit/callback
+app.get('/auth/tripit',
+    passport.authenticate('tripit'),
+    function (req, res) {
+    // The request will be redirected to TripIt for authentication, so this
+    // function will not be called.
+});
+
+// GET /auth/tripit/callback
+// Use passport.authenticate() as route middleware to authenticate the
+// request. If authentication fails, the user will be redirected back to the
+// login page. Otherwise, the primary route function function will be called,
+// which, in this example, will redirect the user to the home page.
+app.get('/auth/tripit/callback',
+
+    passport.authenticate('tripit', { failureRedirect: '/login' }),
+    function (req, res) {
+        res.redirect('/');
+});
+
+
+
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+
+
+app.get('/auth/tripit/connect', function (req, res) {
+    
+    var OAuth = require('oauth').OAuth;
+    
+    consumer = new OAuth('https://api.tripit.com/oauth/request_token',
+        'https://api.tripit.com/oauth/access_token',
+        TRIPIT_API_KEY, TRIPIT_API_SECRET, '1.0',
+        null, 'HMAC-SHA1');
+ 
+    consumer.getOAuthRequestToken(function (err, oauth_token, oauth_token_secret, results) {
+        console.log('==>We got the the request token');
+        console.log(arguments);
+
+        if (err) {
+            req.session.csontos = "failure";
+            console.log(err);
+            res.redirect('/');
+        } else {
+            //we store these in the session until the callback, at which point we delete these and then we will store the authorized credentials in a database
+            req.session.tripit_oauth_token = oauth_token;
+            req.session.tripit_oauth_token_secret = oauth_token_secret;
+
+
+            var parsed = url.parse('https://www.tripit.com/oauth/authorize', true);
+            parsed.query['oauth_token'] = oauth_token;
+            parsed.query['oauth_callback'] = 'http://localhost:3000/auth/tripit/callback2';
+            delete parsed.search;
+
+            var location = url.format(parsed);
+            res.redirect(location);
+        }
+    })
+});
+
+
+app.get('/auth/tripit/callback2', function (req, res) {
+   
+    console.log('==>handleTripItAuthenticateCallback');
+    
+    var oauth_token = req.query['oauth_token'];
+    var oauthVerifier = req.query['oauth_verifier'] || null;
+    var oauth_token_secret = req.session.tripit_oauth_token_secret;
+    
+
+    if (!oauth_token) {
+        console.log('==>handleTripItAuthenticateCallback - ugh. no oauth_token');
+        res.redirect('/login');
+    }
+   
+    var OAuth = require('oauth').OAuth;
+    consumer = new OAuth('https://api.tripit.com/oauth/request_token',
+        'https://api.tripit.com/oauth/access_token',
+        TRIPIT_API_KEY, TRIPIT_API_SECRET, '1.0',
+        null, 'HMAC-SHA1');
+    
+    // Get the authorized access_token with the un-authorized one.
+    consumer.getOAuthAccessToken(oauth_token, oauth_token_secret, function (err, oauth_access_token, oauth_access_token_secret, results) {
+        console.log('==>Get the access token');
+        console.log(arguments);
+        
+        if (!err) {
+            // Access the protected resource with access token
+            var url = 'https://api.tripit.com/v1/get/profile?format=json';
+            consumer.get(url, oauth_access_token, oauth_access_token_secret, function (err, data, response) {
+                console.log('==>Access Tripit Profile');
+                console.log(err);
+                console.log(data);
+                req.session.tripitProfile = data;
+                res.redirect('/')
+
+            });
+        }
+    });
+});
+
+
+//app.get('/auth/tripit2', function (req, res) {
+    
+//    var OAuth = require('oauth').OAuth;
+    
+//    consumer = new OAuth('https://api.tripit.com/oauth/request_token',
+//        'https://api.tripit.com/oauth/access_token',
+//        TRIPIT_API_KEY, TRIPIT_API_SECRET, '1.0',
+//        null, 'HMAC-SHA1');
+    
+//    // Get the request token
+//    consumer.getOAuthRequestToken(function (err, oauth_token, oauth_token_secret, results) {
+//        console.log('==>Get the request token');
+//        console.log(arguments);
+
+//        if (!err) {
+//                // Get the authorized access_token with the un-authorized one.
+//                consumer.getOAuthAccessToken(oauth_token, oauth_token_secret, function (err, oauth_access_token, oauth_access_token_secret, results) {
+//                console.log('==>Get the access token');
+//                console.log(arguments);
+
+//                if (!err){
+//                    // Access the protected resource with access token
+//                    var url = 'https://api.tripit.com/v1/get/profile?format=json';
+//                    consumer.get(url, oauth_access_token, oauth_access_token_secret, function (err, data, response) {
+//                        console.log('==>Access the protected resource with access token');
+//                        console.log(err);
+//                        console.log(data);
+//                    });
+//                }
+//            });
+//        }
+//    });
+
+//    res.redirect('/');
+     
+//});
+
+
+
 
 app.listen(3000);
 
