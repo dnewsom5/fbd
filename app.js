@@ -37,7 +37,6 @@ passport.deserializeUser(function(obj, done) {
 });
 
 
-
 var app = express();
 
 // configure Express
@@ -48,9 +47,9 @@ var app = express();
   app.use(bodyParser());
   app.use(methodOverride());
   app.use(session({ secret: 'keyboard cat' }));
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + '/public', { maxAge: 86400000 }));
 
-// Initialize Passport!  Also use passport.session() middleware, to support
+  // Initialize Passport!  Also use passport.session() middleware, to support
   // persistent login sessions (recommended).
   app.use(passport.initialize());
   app.use(passport.session());
@@ -87,6 +86,10 @@ passport.use(new TripItStrategy({
 },
 function (token, tokenSecret, profile, done) {
     // asynchronous verification, for effect...
+    
+    console.log('no way: ' + token);
+    console.log('no way secret: ' + tokenSecret);
+
     process.nextTick(function () {
         // To keep the example simple, the user's TripIt profile is returned to
         // represent the logged-in user. In a typical application, you would want
@@ -96,6 +99,12 @@ function (token, tokenSecret, profile, done) {
     });
 }
 ));
+
+var OAuth = require('oauth').OAuth;
+var tripItOauth = new OAuth('https://api.tripit.com/oauth/request_token',
+    'https://api.tripit.com/oauth/access_token',
+    TRIPIT_API_KEY, TRIPIT_API_SECRET, '1.0',
+    null, 'HMAC-SHA1');
 
 
 app.get('/', function (req, res) {
@@ -152,7 +161,6 @@ app.get('/auth/tripit',
 // login page. Otherwise, the primary route function function will be called,
 // which, in this example, will redirect the user to the home page.
 app.get('/auth/tripit/callback',
-
     passport.authenticate('tripit', { failureRedirect: '/login' }),
     function (req, res) {
         res.redirect('/');
@@ -169,12 +177,7 @@ app.get('/logout', function(req, res){
 
 app.get('/auth/tripit/connect', function (req, res) {
     
-    var OAuth = require('oauth').OAuth;
-    
-    consumer = new OAuth('https://api.tripit.com/oauth/request_token',
-        'https://api.tripit.com/oauth/access_token',
-        TRIPIT_API_KEY, TRIPIT_API_SECRET, '1.0',
-        null, 'HMAC-SHA1');
+    consumer = tripItOauth;
  
     consumer.getOAuthRequestToken(function (err, oauth_token, oauth_token_secret, results) {
         console.log('==>We got the the request token');
@@ -202,6 +205,7 @@ app.get('/auth/tripit/connect', function (req, res) {
 });
 
 
+
 app.get('/auth/tripit/callback2', function (req, res) {
    
     console.log('==>handleTripItAuthenticateCallback');
@@ -210,81 +214,73 @@ app.get('/auth/tripit/callback2', function (req, res) {
     var oauthVerifier = req.query['oauth_verifier'] || null;
     var oauth_token_secret = req.session.tripit_oauth_token_secret;
     
-
     if (!oauth_token) {
         console.log('==>handleTripItAuthenticateCallback - ugh. no oauth_token');
         res.redirect('/login');
     }
-   
-    var OAuth = require('oauth').OAuth;
-    consumer = new OAuth('https://api.tripit.com/oauth/request_token',
-        'https://api.tripit.com/oauth/access_token',
-        TRIPIT_API_KEY, TRIPIT_API_SECRET, '1.0',
-        null, 'HMAC-SHA1');
+    
+    delete req.session.tripit_oauth_token;
+    delete req.session.tripit_oauth_token_secret;
+        
+    console.log('temp secret:' + oauth_token_secret)
     
     // Get the authorized access_token with the un-authorized one.
-    consumer.getOAuthAccessToken(oauth_token, oauth_token_secret, function (err, oauth_access_token, oauth_access_token_secret, results) {
+    tripItOauth.getOAuthAccessToken(oauth_token, oauth_token_secret, function (err, oauth_access_token, oauth_access_token_secret, results) {
         console.log('==>Get the access token');
         console.log(arguments);
         
+   
+        console.log('access secret:' + oauth_access_token_secret)
         if (!err) {
+            
+            req.session.tripit_oauth_access_token = oauth_access_token //ideally we store this somewhere better
+            req.session.tripit_oauth_access_secret = oauth_access_token_secret //ideally we store this somewhere better
+
             // Access the protected resource with access token
             var url = 'https://api.tripit.com/v1/get/profile?format=json';
-            consumer.get(url, oauth_access_token, oauth_access_token_secret, function (err, data, response) {
+            tripItOauth.get(url, oauth_access_token, oauth_access_token_secret, function (err, data, response) {
                 console.log('==>Access Tripit Profile');
+                console.log('current secret:' + req.session.tripit_oauth_access_secret);
                 console.log(err);
                 console.log(data);
-                req.session.tripitProfile = data;
                 res.redirect('/')
-
             });
         }
     });
 });
 
 
-//app.get('/auth/tripit2', function (req, res) {
+app.get('/trips', function (req, res) {
     
-//    var OAuth = require('oauth').OAuth;
+    var oauth_access_token = req.session.tripit_oauth_access_token;
+    var oauth_access_token_secret = req.session.tripit_oauth_access_secret;
     
-//    consumer = new OAuth('https://api.tripit.com/oauth/request_token',
-//        'https://api.tripit.com/oauth/access_token',
-//        TRIPIT_API_KEY, TRIPIT_API_SECRET, '1.0',
-//        null, 'HMAC-SHA1');
+    if (!oauth_access_token_secret) {
+        
+        res.redirect('/auth/tripit/connect');
+    }
     
-//    // Get the request token
-//    consumer.getOAuthRequestToken(function (err, oauth_token, oauth_token_secret, results) {
-//        console.log('==>Get the request token');
-//        console.log(arguments);
+    console.log('==>Access Tripit Trips');
+    console.log('access token:' + oauth_access_token)
+    console.log('access secret:' + oauth_access_token_secret)
 
-//        if (!err) {
-//                // Get the authorized access_token with the un-authorized one.
-//                consumer.getOAuthAccessToken(oauth_token, oauth_token_secret, function (err, oauth_access_token, oauth_access_token_secret, results) {
-//                console.log('==>Get the access token');
-//                console.log(arguments);
+    // Access the protected resource with access token
+    var url = 'https://api.tripit.com/v1/list/trip?format=json';
+    tripItOauth.get(url, oauth_access_token, oauth_access_token_secret, function (err, data, response) {
+        console.log('==>Access Tripit Trips Response');
+        console.log(err);
+        console.log(data);
+        
+        var json = JSON.parse(data);
 
-//                if (!err){
-//                    // Access the protected resource with access token
-//                    var url = 'https://api.tripit.com/v1/get/profile?format=json';
-//                    consumer.get(url, oauth_access_token, oauth_access_token_secret, function (err, data, response) {
-//                        console.log('==>Access the protected resource with access token');
-//                        console.log(err);
-//                        console.log(data);
-//                    });
-//                }
-//            });
-//        }
-//    });
-
-//    res.redirect('/');
-     
-//});
+        if (!err) {
+            res.render('trips', { trips: json });
+        }
+    });
+});
 
 
-
-
-app.listen(3000);
-
+app.listen(port);
 
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If

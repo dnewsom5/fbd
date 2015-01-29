@@ -14,11 +14,10 @@
 				@if(model.user && model.user.displayName)
 				{
 					<h1>hello there  @model.user.displayName</h1>
-
-				
 				}
-				<div> @JSON.stringify(model)</div>
-
+				<!--
+				<div> JSON.stringify(model)</div>
+				-->
 			</div>
 		</div>
 

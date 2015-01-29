@@ -1,0 +1,17 @@
+﻿@html.extend('/layout.vash', function(model){
+	
+	model.title = "Trip List"
+	@html.block('content', function(model){
+		
+		<section id="contact" class="home-section text-center">
+		<div class="heading-contact marginbot-50">
+			<div class="container">
+			<div class="row">
+				<h2>Trips</h2>
+				<ul>
+					<li>@model.trips.Trip.display_name | @model.trips.Trip.start_date - @model.trips.Trip.end_date</li>
+				</ul>
+			</div>
+		</div>
+	})
+})
