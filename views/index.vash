@@ -24,7 +24,7 @@
 		</section>
 
 		@html.include('_intro', model)
-		@html.include('_contact', model)
+		
 		@html.include('_about', model)
         
 	})
