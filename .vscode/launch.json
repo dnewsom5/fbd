@@ -1,0 +1,34 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Launch",
+			"type": "node",
+			"request": "launch",
+			"program": "app.js",
+			"stopOnEntry": false,
+			"args": [],
+			"cwd": ".",
+			"runtimeExecutable": null,
+			"runtimeArgs": [
+				"--nolazy"
+			],
+			"env": {
+				"NODE_ENV": "development",
+                "FBD_FACEBOOK_APP_ID":"406796419480409",
+                "FBD_FACEBOOK_APP_SECRET":"c2f8115f9ae109bd4d7aca2d720eab46",
+                "FBD_TRIPIT_APP_ID":"aea247f29a5409ecba4789ba05d5003370cccc3e",
+                "FBD_TRIPIT_APP_SECRET":"7a19fa279755fcaa03c3718b677628dc22b44a98"
+			},
+			"externalConsole": false,
+			"sourceMaps": false,
+			"outDir": null
+		},
+		{
+			"name": "Attach",
+			"type": "node",
+			"request": "attach",
+			"port": 5858
+		}
+	]
+}

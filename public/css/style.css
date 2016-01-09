@@ -681,14 +681,29 @@ form#contact-form input:focus,form#contact-form select:focus,form#contact-form t
 .company-social .social-vimeo a:hover{background: #71c6f3;}
 
 
+.page-wrap {
+    min-height:100%;
+    margin-bottom:-100px;
+}
+
+.page-wrap:after {
+  content: " ";
+  display: block;
+  height:100px;
+}
+
+#footer {
+  height: 100px; 
+}
 
 /* ===========================
 --- Footer
 ============================ */
 
+
 footer {
 	text-align: center;
-	padding: 50px 0 ;
+	xpadding: 50px 0 ;
 	
 }
 

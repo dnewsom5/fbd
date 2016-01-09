@@ -6,12 +6,23 @@
 		<section id="contact" class="home-section text-center">
 		<div class="heading-contact marginbot-50">
 			<div class="container">
-			<div class="row">
-				<h2>Trips</h2>
-				<ul>
-					<li>@model.trips.Trip.display_name | @model.trips.Trip.start_date - @model.trips.Trip.end_date</li>
-				</ul>
+				<div class="row">
+					<h2>Trips</h2>
+                    @if(model.trips.Trip) {
+                        <ul>
+                            @model.trips.Trip.forEach(function(trip) {
+                                <li>@trip.display_name | @trip.start_date - @trip.end_date</li>				
+                            })
+                        </ul>                    
+                    }
+                    else {
+                        <div>
+                            You have no trips
+                        </div>
+                    }
+				</div>
 			</div>
 		</div>
+		</section>
 	})
 })

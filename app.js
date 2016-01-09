@@ -13,7 +13,8 @@ var express = require('express')
   , url = require('url')
   ;
 
-
+var FBD_URL = process.env.FBD_URL || "http://localhost:" + port;
+  
 var FACEBOOK_APP_ID = process.env.FBD_FACEBOOK_APP_ID;
 var FACEBOOK_APP_SECRET = process.env.FBD_FACEBOOK_APP_SECRET;
 
@@ -64,12 +65,12 @@ var app = express();
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    callbackURL: FBD_URL + "/auth/facebook/callback"
 },
   function (accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-
+        
         // To keep the example simple, the user's Facebook profile is returned to
         // represent the logged-in user.  In a typical application, you would want
         // to associate the Facebook account with a user record in your database,
@@ -82,12 +83,12 @@ passport.use(new FacebookStrategy({
 passport.use(new TripItStrategy({
     consumerKey: TRIPIT_API_KEY,
     consumerSecret: TRIPIT_API_SECRET,
-    callbackURL: "http://localhost:3000/auth/tripit/callback",
+    callbackURL: FBD_URL + "/auth/tripit/callback", 
     sessionKey: 'TripitSessionKey'
 },
 function (token, tokenSecret, profile, done) {
     // asynchronous verification, for effect...
-
+    
     console.log('no way: ' + token);
     console.log('no way secret: ' + tokenSecret);
 
@@ -137,7 +138,7 @@ app.get('/auth/facebook',
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get('/auth/facebook/callback',
+app.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { failureRedirect: '/index' }),
   function(req, res) {
     res.redirect('/');
@@ -177,9 +178,9 @@ app.get('/logout', function(req, res){
 
 
 app.get('/auth/tripit/connect', function (req, res) {
-
+    
     consumer = tripItOauth;
-
+ 
     consumer.getOAuthRequestToken(function (err, oauth_token, oauth_token_secret, results) {
         console.log('==>We got the the request token');
         console.log(arguments);
@@ -196,7 +197,7 @@ app.get('/auth/tripit/connect', function (req, res) {
 
             var parsed = url.parse('https://www.tripit.com/oauth/authorize', true);
             parsed.query['oauth_token'] = oauth_token;
-            parsed.query['oauth_callback'] = 'http://localhost:3000/auth/tripit/callback2';
+            parsed.query['oauth_callback'] = FBD_URL + '/auth/tripit/callback2';
             delete parsed.search;
 
             var location = url.format(parsed);
@@ -208,32 +209,32 @@ app.get('/auth/tripit/connect', function (req, res) {
 
 
 app.get('/auth/tripit/callback2', function (req, res) {
-
+   
     console.log('==>handleTripItAuthenticateCallback');
-
+    
     var oauth_token = req.query['oauth_token'];
     var oauthVerifier = req.query['oauth_verifier'] || null;
     var oauth_token_secret = req.session.tripit_oauth_token_secret;
-
+    
     if (!oauth_token) {
         console.log('==>handleTripItAuthenticateCallback - ugh. no oauth_token');
         res.redirect('/login');
     }
-
+    
     delete req.session.tripit_oauth_token;
     delete req.session.tripit_oauth_token_secret;
-
+        
     console.log('temp secret:' + oauth_token_secret)
-
+    
     // Get the authorized access_token with the un-authorized one.
     tripItOauth.getOAuthAccessToken(oauth_token, oauth_token_secret, function (err, oauth_access_token, oauth_access_token_secret, results) {
         console.log('==>Get the access token');
         console.log(arguments);
-
-
+        
+   
         console.log('access secret:' + oauth_access_token_secret)
         if (!err) {
-
+            
             req.session.tripit_oauth_access_token = oauth_access_token //ideally we store this somewhere better
             req.session.tripit_oauth_access_secret = oauth_access_token_secret //ideally we store this somewhere better
 
@@ -252,15 +253,15 @@ app.get('/auth/tripit/callback2', function (req, res) {
 
 
 app.get('/trips', function (req, res) {
-
+    
     var oauth_access_token = req.session.tripit_oauth_access_token;
     var oauth_access_token_secret = req.session.tripit_oauth_access_secret;
-
+    
     if (!oauth_access_token_secret) {
-
+        
         res.redirect('/auth/tripit/connect');
     }
-
+    
     console.log('==>Access Tripit Trips');
     console.log('access token:' + oauth_access_token)
     console.log('access secret:' + oauth_access_token_secret)
@@ -271,10 +272,15 @@ app.get('/trips', function (req, res) {
         console.log('==>Access Tripit Trips Response');
         console.log(err);
         console.log(data);
-
+        
         var json = JSON.parse(data);
 
         if (!err) {
+            if (!Array.isArray(json)) {
+                //tripit's JSON is really bad. If there is just one trip, then they don't return an array.
+                json = [json];
+            }
+
             res.render('trips', { trips: json });
         }
     });
